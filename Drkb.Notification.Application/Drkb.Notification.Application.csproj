@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>Drkb.Notification.Application</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Drkb.ResultObjects" Version="1.0.1" />
+      <PackageReference Include="MediatR" Version="12.5.0" />
+      <PackageReference Include="MessageBroker.Abstractions" Version="2.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Drkb.Notification.Domain\Drkb.Notification.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
