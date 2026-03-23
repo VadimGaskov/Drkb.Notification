@@ -16,7 +16,7 @@ public static class RabbitMQServiceCollection
             {
                 x.Bind<MessageEvent>(
                     exchange: NotificationMetadata.Created.Exchange,
-                    queueName: "employment.position.created",
+                    queueName: "notification.message.created",
                     routingKey: NotificationMetadata.Created.RoutingKey);
             });
         });

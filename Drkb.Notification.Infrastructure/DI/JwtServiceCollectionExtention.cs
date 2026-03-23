@@ -50,7 +50,7 @@ public static class JwtServiceCollectionExtention
                         var path = context.HttpContext.Request.Path;
 
                         if (!string.IsNullOrEmpty(accessToken)
-                            && path.StartsWithSegments("/notification"))
+                            && path.StartsWithSegments("/notifications"))
                         {
                             context.Token = accessToken;
                         }

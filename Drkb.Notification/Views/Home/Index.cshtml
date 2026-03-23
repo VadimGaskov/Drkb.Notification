@@ -7,13 +7,13 @@
 <body>
 <div id="inputForm">
     <input type="text" id="message" />
-    <input type="button" id="sendBtn" value="Отправить" disabled="disabled" />
+    <input type="button" id="sendBtn" value="Отправить" />
 </div>
 <div id="chatroom"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
 <script>
     const hubConnection = new signalR.HubConnectionBuilder()
-        .withUrl("/notification")
+        .withUrl("/notifications")
         .build();
 
     document.getElementById("sendBtn").addEventListener("click", function () {

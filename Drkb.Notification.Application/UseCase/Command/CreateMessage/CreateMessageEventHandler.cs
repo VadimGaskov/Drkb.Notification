@@ -1,4 +1,5 @@
-﻿using Drkb.Notification.Application.Interfaces;
+﻿using System.Text.Json;
+using Drkb.Notification.Application.Interfaces;
 using Drkb.Notification.Application.Interfaces.DataProvider;
 using Drkb.Notification.Domain.Entity;
 using MediatR;
@@ -26,14 +27,13 @@ public class CreateMessageEventHandler: INotificationHandler<CreateMessageEvent>
             {
                 CreatedAt = notification.CreatedAt,
                 IsRead = false,
-                PayloadJson = notification.PayloadJson,
+                PayloadJson = JsonSerializer.Serialize(notification.PayloadJson),
                 Type = notification.TypeNotification
             };
 
             await _createMessageDataProvider.AddAsync(message, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
-
-            var messageToAll = new MessageDto(message.Type, message.PayloadJson, message.CreatedAt);
+            var messageToAll = new MessageDto(message.PayloadJson, message.CreatedAt);
 
             await _notificationDispatcher.SendToAll(message.Type, messageToAll, cancellationToken);
             return;
@@ -46,7 +46,7 @@ public class CreateMessageEventHandler: INotificationHandler<CreateMessageEvent>
             {
                 CreatedAt = notification.CreatedAt,
                 IsRead = false,
-                PayloadJson = notification.PayloadJson,
+                PayloadJson = JsonSerializer.Serialize(notification.PayloadJson),
                 Type = notification.TypeNotification,
                 UserId = userId
             })
@@ -54,9 +54,9 @@ public class CreateMessageEventHandler: INotificationHandler<CreateMessageEvent>
 
         await _createMessageDataProvider.AddAsync(messages, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
-
+        
         var messageToUsers =
-            new MessageDto(notification.TypeNotification, notification.PayloadJson, notification.CreatedAt);
+            new MessageDto(notification.PayloadJson, notification.CreatedAt);
 
         await _notificationDispatcher.SendToUsers(userIds, notification.TypeNotification, messageToUsers, cancellationToken);
     }

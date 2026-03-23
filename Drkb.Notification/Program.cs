@@ -66,7 +66,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapHub<NotificationHub>("/notification");
+app.MapHub<NotificationHub>("/notifications");
 
 app.MapControllerRoute(
     name: "default",
