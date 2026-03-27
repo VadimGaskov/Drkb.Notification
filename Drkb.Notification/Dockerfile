@@ -1,12 +1,24 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+
+ARG NUGET_TOKEN
+
+# Чистим локальные кэши
+RUN dotnet nuget remove source drkb-private || true
+RUN dotnet nuget locals all --clear
+
+# Добавляем приватный источник
+
+RUN dotnet nuget add source https://baget.drkb-portal.ru/v3/index.json \
+    --name drkb-private \
+    --username drkb \
+    --password $NUGET_TOKEN \
+    --store-password-in-clear-text
+
 COPY ["Drkb.Notification/Drkb.Notification.csproj", "Drkb.Notification/"]
 COPY ["Drkb.Notification.Infrastructure/Drkb.Notification.Infrastructure.csproj", "Drkb.Notification.Infrastructure/"]
 COPY ["Drkb.Notification.Application/Drkb.Notification.Application.csproj", "Drkb.Notification.Application/"]
