@@ -1,8 +1,9 @@
-﻿using MessageBroker.Abstractions;
+﻿using MassTransit;
 
 namespace Drkb.Notification.Contract;
 
-public record MessageEvent: BaseIntegrationEvent
+[EntityName("task.created.v1")]
+public record MessageEvent
 {
     public List<Guid> UserIds { get; set; } = new();
     public object PayloadJson { get; set; } = null!;

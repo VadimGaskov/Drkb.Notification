@@ -23,7 +23,6 @@ builder.Services.AddSignalR();
 builder.Services.AddDataProviderServices();
 builder.Services.AddQueryObjects();
 builder.Services.AddRabbitMQCollection(builder.Configuration);
-builder.Services.AddEventHandlerServices();
 builder.Services.AddAuxiliaryServices();
 
 builder.Services.AddSerilogLogger();

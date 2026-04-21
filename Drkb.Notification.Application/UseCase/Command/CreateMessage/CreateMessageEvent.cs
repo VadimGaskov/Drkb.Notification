@@ -7,6 +7,4 @@ public record CreateMessageEvent: INotification
     public List<Guid> UserIds { get; set; } = new();
     public object PayloadJson { get; set; } = null!;
     public string TypeNotification { get; set; } = null!;
-    public DateTime CreatedAt { get; set; }
-    public Guid EventId { get; set; }
 }

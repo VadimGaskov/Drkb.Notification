@@ -1,6 +1,6 @@
-﻿using Drkb.Notification.Contract;
-using Drkb.Notification.Integration;
-using MessageBroker.RabbitMQ;
+﻿using Drkb.MessageBroker.Masstransit;
+using Drkb.Notification.Infrastructure.Data;
+using Drkb.Notification.Infrastructure.Services.MessageBroker;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,16 +10,16 @@ public static class RabbitMQServiceCollection
 {
     public static IServiceCollection AddRabbitMQCollection(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddRabbitMq(configuration.GetSection("RabbitMQ"), configure =>
+        services.AddDrkbMassTransit<NotificationDbContext>(configuration.GetSection("RabbitMQ"), options =>
         {
-            configure.ConfigureConsumer(x =>
+            options.DomainName = "Notification";
+
+            options.ConfigureRegistration = x =>
             {
-                x.Bind<MessageEvent>(
-                    exchange: NotificationMetadata.Created.Exchange,
-                    queueName: "notification.message.created",
-                    routingKey: NotificationMetadata.Created.RoutingKey);
-            });
+                x.AddConsumer<MessageConsumer>();
+            };
         });
+        
         return services;
     }
 }

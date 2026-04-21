@@ -1,29 +1,31 @@
 ﻿using Drkb.Notification.Application.UseCase.Command.CreateMessage;
 using Drkb.Notification.Contract;
+using MassTransit;
 using MediatR;
 using MessageBroker.Abstractions.Interfaces.Consumer;
 
 namespace Drkb.Notification.Infrastructure.Services.MessageBroker;
 
-public class MessageEventHandler: IEventHandler<MessageEvent>
+public class MessageConsumer: IConsumer<MessageEvent>
 {
     private readonly IMediator _mediator;
 
-    public MessageEventHandler(IMediator mediator)
+    public MessageConsumer(IMediator mediator)
     {
         _mediator = mediator;
     }
 
-    public async Task HandleAsync(MessageEvent @event, CancellationToken cancellationToken = new CancellationToken())
+    public async Task Consume(ConsumeContext<MessageEvent> context)
     {
+        var @event = context.Message;
+        
         var message = new CreateMessageEvent()
         {
-            EventId = @event.EventId,
-            CreatedAt = @event.OccuredAt,
             PayloadJson = @event.PayloadJson,
             TypeNotification = @event.TypeNotification,
             UserIds = @event.UserIds,
         };
-        await _mediator.Publish(message, cancellationToken);
+        
+        await _mediator.Publish(message);
     }
 }

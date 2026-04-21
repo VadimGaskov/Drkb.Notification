@@ -25,7 +25,7 @@ public class CreateMessageEventHandler: INotificationHandler<CreateMessageEvent>
         {
             var message = new Message
             {
-                CreatedAt = notification.CreatedAt,
+                CreatedAt = DateTime.UtcNow,
                 IsRead = false,
                 PayloadJson = JsonSerializer.Serialize(notification.PayloadJson),
                 Type = notification.TypeNotification
@@ -44,7 +44,7 @@ public class CreateMessageEventHandler: INotificationHandler<CreateMessageEvent>
         var messages = userIds
             .Select(userId => new Message
             {
-                CreatedAt = notification.CreatedAt,
+                CreatedAt = DateTime.UtcNow,
                 IsRead = false,
                 PayloadJson = JsonSerializer.Serialize(notification.PayloadJson),
                 Type = notification.TypeNotification,
@@ -55,8 +55,7 @@ public class CreateMessageEventHandler: INotificationHandler<CreateMessageEvent>
         await _createMessageDataProvider.AddAsync(messages, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
         
-        var messageToUsers =
-            new MessageDto(notification.PayloadJson, notification.CreatedAt);
+        var messageToUsers = new MessageDto(notification.PayloadJson, DateTime.UtcNow);
 
         await _notificationDispatcher.SendToUsers(userIds, notification.TypeNotification, messageToUsers, cancellationToken);
     }
