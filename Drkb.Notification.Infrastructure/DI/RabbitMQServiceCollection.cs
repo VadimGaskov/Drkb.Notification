@@ -12,7 +12,7 @@ public static class RabbitMQServiceCollection
     {
         services.AddDrkbMassTransit<NotificationDbContext>(configuration.GetSection("RabbitMQ"), options =>
         {
-            options.DomainName = "Notification";
+            options.DomainName = "notification";
 
             options.ConfigureRegistration = x =>
             {
