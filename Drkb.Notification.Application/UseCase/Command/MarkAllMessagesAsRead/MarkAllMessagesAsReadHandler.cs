@@ -6,16 +6,16 @@ namespace Drkb.Notification.Application.UseCase.Command.MarkAllMessagesAsRead;
 
 public class MarkAllMessagesAsReadHandler: IRequestHandler<MarkAllMessagesAsReadCommand, Result>
 {
-    private readonly IMarkAllMessagesAsReadDataProvider _markAllMessagesAsReadDataProvider;
+    private readonly IMarkAllMessagesAsReadPort _markAllMessagesAsReadPort;
 
-    public MarkAllMessagesAsReadHandler(IMarkAllMessagesAsReadDataProvider markAllMessagesAsReadDataProvider, IUnitOfWork unitOfWork)
+    public MarkAllMessagesAsReadHandler(IMarkAllMessagesAsReadPort markAllMessagesAsReadPort, IUnitOfWork unitOfWork)
     {
-        _markAllMessagesAsReadDataProvider = markAllMessagesAsReadDataProvider;
+        _markAllMessagesAsReadPort = markAllMessagesAsReadPort;
     }
 
     public async Task<Result> Handle(MarkAllMessagesAsReadCommand request, CancellationToken cancellationToken)
     {
-        await _markAllMessagesAsReadDataProvider.ExecuteAsync(cancellationToken);
+        await _markAllMessagesAsReadPort.ExecuteAsync(cancellationToken);
         return Result.Success();
     }
 }

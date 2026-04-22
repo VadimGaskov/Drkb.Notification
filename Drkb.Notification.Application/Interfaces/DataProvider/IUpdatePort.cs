@@ -1,6 +1,6 @@
 ﻿namespace Drkb.Notification.Application.Interfaces.DataProvider;
 
-public interface IUpdateDataProvider<in TEntity>: IDataProviderMarker where TEntity: class
+public interface IUpdatePort<in TEntity>: IPortMarker where TEntity: class
 {
     public void Update(TEntity entity);
 }

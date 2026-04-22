@@ -8,10 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drkb.Notification.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drkb.Notification.Infrastructure", "Drkb.Notification.Infrastructure\Drkb.Notification.Infrastructure.csproj", "{38E235B5-ECFB-47B1-8B2F-F00EF5E12812}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drkb.Notification.Contract", "Drkb.Notification.Contract\Drkb.Notification.Contract.csproj", "{C67C600B-46A5-409F-A4D6-0C1A81CA83EE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drkb.Notification.Integration", "Drkb.Notification.Integration\Drkb.Notification.Integration.csproj", "{5E378CB1-A30F-4409-B059-3365A27EF0C6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,13 +30,5 @@ Global
 		{38E235B5-ECFB-47B1-8B2F-F00EF5E12812}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38E235B5-ECFB-47B1-8B2F-F00EF5E12812}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38E235B5-ECFB-47B1-8B2F-F00EF5E12812}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C67C600B-46A5-409F-A4D6-0C1A81CA83EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C67C600B-46A5-409F-A4D6-0C1A81CA83EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C67C600B-46A5-409F-A4D6-0C1A81CA83EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C67C600B-46A5-409F-A4D6-0C1A81CA83EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E378CB1-A30F-4409-B059-3365A27EF0C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E378CB1-A30F-4409-B059-3365A27EF0C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E378CB1-A30F-4409-B059-3365A27EF0C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E378CB1-A30F-4409-B059-3365A27EF0C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

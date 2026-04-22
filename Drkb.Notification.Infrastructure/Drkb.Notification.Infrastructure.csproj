@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="13.0.1" />
+      <PackageReference Include="Drkb.Employment.Contract" Version="2.1.3" />
       <PackageReference Include="Drkb.MessageBroker.Masstransit" Version="1.0.3" />
       <PackageReference Include="Drkb.Notification.Contract" Version="2.1.0" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.18" />
@@ -29,9 +30,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Drkb.Notification.Application\Drkb.Notification.Application.csproj" />
-      <ProjectReference Include="..\Drkb.Notification.Contract\Drkb.Notification.Contract.csproj" />
       <ProjectReference Include="..\Drkb.Notification.Domain\Drkb.Notification.Domain.csproj" />
-      <ProjectReference Include="..\Drkb.Notification.Integration\Drkb.Notification.Integration.csproj" />
     </ItemGroup>
 
 </Project>

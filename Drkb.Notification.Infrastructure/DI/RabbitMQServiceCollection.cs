@@ -1,6 +1,7 @@
 ﻿using Drkb.MessageBroker.Masstransit;
 using Drkb.Notification.Infrastructure.Data;
 using Drkb.Notification.Infrastructure.Services.MessageBroker;
+using Drkb.Notification.Infrastructure.Services.MessageBroker.Employment;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,7 +17,9 @@ public static class RabbitMQServiceCollection
 
             options.ConfigureRegistration = x =>
             {
-                x.AddConsumer<MessageConsumer>();
+                x.AddConsumer<CheckListCompletedConsumer>();
+                x.AddConsumer<CheckListCoursesAssignedConsumer>();
+                x.AddConsumer<ElementCompletedConsumer>();
             };
         });
         

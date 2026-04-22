@@ -1,6 +1,6 @@
 ﻿namespace Drkb.Notification.Application.Interfaces.DataProvider;
 
-public interface IDataProviderMarker
+public interface IPortMarker
 {
     
 }

@@ -2,7 +2,7 @@
 
 namespace Drkb.Notification.Application.UseCase.Command.MarkMessageByIdAsRead;
 
-public interface IMarkMessageByIdAsReadDataProvider: IDataProviderMarker
+public interface IMarkMessageByIdAsReadPort: IPortMarker
 {
     Task ExecuteAsync(MarkMessageByIdAsReadCommand command, CancellationToken cancellationToken);
 }

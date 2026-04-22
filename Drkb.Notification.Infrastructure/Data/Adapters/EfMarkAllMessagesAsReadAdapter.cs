@@ -1,16 +1,15 @@
 ﻿using Drkb.Notification.Application.Interfaces.Authorization;
-using Drkb.Notification.Application.Interfaces.DataProvider;
 using Drkb.Notification.Application.UseCase.Command.MarkAllMessagesAsRead;
 using Microsoft.EntityFrameworkCore;
 
-namespace Drkb.Notification.Infrastructure.Data.DataProvider;
+namespace Drkb.Notification.Infrastructure.Data.Adapters;
 
-public class EfMarkAllMessagesAsReadDataProvider: IMarkAllMessagesAsReadDataProvider
+public class EfMarkAllMessagesAsReadAdapter: IMarkAllMessagesAsReadPort
 {
     private readonly NotificationDbContext _context;
     private readonly ICurrentUserService _currentUserService;
 
-    public EfMarkAllMessagesAsReadDataProvider(NotificationDbContext context, ICurrentUserService currentUserService)
+    public EfMarkAllMessagesAsReadAdapter(NotificationDbContext context, ICurrentUserService currentUserService)
     {
         _context = context;
         _currentUserService = currentUserService;

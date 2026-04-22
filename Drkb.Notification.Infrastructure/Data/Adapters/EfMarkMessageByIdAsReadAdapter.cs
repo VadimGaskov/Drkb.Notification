@@ -2,14 +2,14 @@
 using Drkb.Notification.Application.UseCase.Command.MarkMessageByIdAsRead;
 using Microsoft.EntityFrameworkCore;
 
-namespace Drkb.Notification.Infrastructure.Data.DataProvider;
+namespace Drkb.Notification.Infrastructure.Data.Adapters;
 
-public class EFMarkMessageByIdAsReadDataProvider: IMarkMessageByIdAsReadDataProvider
+public class EfMarkMessageByIdAsReadAdapter: IMarkMessageByIdAsReadPort
 {
     private readonly ICurrentUserService _currentUserService;
     private readonly NotificationDbContext _context;
 
-    public EFMarkMessageByIdAsReadDataProvider(ICurrentUserService currentUserService, NotificationDbContext context)
+    public EfMarkMessageByIdAsReadAdapter(ICurrentUserService currentUserService, NotificationDbContext context)
     {
         _currentUserService = currentUserService;
         _context = context;

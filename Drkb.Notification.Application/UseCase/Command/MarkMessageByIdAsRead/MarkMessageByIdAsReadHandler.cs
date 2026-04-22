@@ -5,9 +5,9 @@ namespace Drkb.Notification.Application.UseCase.Command.MarkMessageByIdAsRead;
 
 public class MarkMessageByIdAsReadHandler: IRequestHandler<MarkMessageByIdAsReadCommand, Result>
 {
-    private readonly IMarkMessageByIdAsReadDataProvider _markMessage;
+    private readonly IMarkMessageByIdAsReadPort _markMessage;
 
-    public MarkMessageByIdAsReadHandler(IMarkMessageByIdAsReadDataProvider markMessage)
+    public MarkMessageByIdAsReadHandler(IMarkMessageByIdAsReadPort markMessage)
     {
         _markMessage = markMessage;
     }
